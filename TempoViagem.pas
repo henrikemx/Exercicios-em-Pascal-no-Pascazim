@@ -1,7 +1,7 @@
 Program TempoViagem ;
 
 var
-	d, v, t, m, r : integer;
+	d, v, h1, m1, m2, dd, r : integer;
 	
 Begin
 	
@@ -12,22 +12,41 @@ Begin
 			writeln('=============================');
 			writeln('**** Inicio dos Cálculos ****');
 			writeln('=============================');
+			writeln();
 			write('Informe a distância a ser percorrida, em km: ');
 			readln(d);
 			write('Informe a velocidade média, em km/h: ');
 			readln(v);
 	
-			t := d div v;
-			m := d mod v;
-	
+			h1 := d div v;
+			m1 := d mod v;
+			dd := d * 60;
+			m2 := dd div v;
+
+			{
 			writeln();
-			writeln('Tempo médio da viagem: ', t, ' hs e ', m, ' min.');
-			// writeln();                                           
-			// writeln('Valor da Divisão: ', t, ' := ', d, ' div ', v);
-			// writeln('Resto da divisão: ', m, ' := ', d, ' mod ', v);
+			writeln(dd, ' := ', d, ' * 60');
+			writeln(h2, ' := (', d, ' * ', ' 60) ', ' div ', v);
+			}
+			  
+			writeln();
+			if h1 >= 1 then
+			begin
+				writeln('Tempo médio da viagem: ', h1, ' hs e ', m1, ' min.s')
+			end
+			else
+			begin
+				writeln('Tempo médio da viagem: ', m2, ' min.s');
+			end;
 			writeln();                                           
 			write('Deseja continuar ? [0 para Sim, 1 para Não] ');
 			readln(r);
+			while (r <> 0) and (r <> 1) do
+			begin
+				writeln('Opção errada. Tente novamente !!');
+				write('Opção: ');
+				readln(r);
+			end;
 		end;
 
     writeln();
